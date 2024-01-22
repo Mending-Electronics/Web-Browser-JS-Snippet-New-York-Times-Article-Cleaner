@@ -1,19 +1,22 @@
 /*
   My GitHub : https://github.com/Mending-Electronics
-  Author : Jallet Alexandre
+  Author : JALLET Alexandre
   Version : 0.1
 
-  Browser Snippet use to:
-     - Clean the web page to isolate Texte contents and illustrations
-     - Set the Roboto Font Family
-     - Add a DarkMode Switch button (Using Bootstrap 5.3 CDN Framworks)
-     - Press 'CTRL+P' to print
-       > Selecte "Save as PDF"
-       > Go to the complements paramters
+
+  Web Browser JavaScript snippet use to:
+     - Clean the web page in order to isolate the text and illustrations
+     - Set  'Roboto' as the new Font Family from Google Fonts Link
+     - Add a DarkMode switch  button using the Bootstrap's 5.3 framework from CDN Link
+
+  After Running, you can save your PDF with the DarkMode Design by following these steps :
+       > Press 'CTRL+P' to print
+       > Select "Save as PDF"
+       > Go to the complements parameters
        > Select "Margin : None"
        > Select "Background Design"
 
-       and SAVE
+       and Save
 
 */
 
@@ -41,14 +44,6 @@ link.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min
 link.integrity = 'sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN';
 link.crossOrigin = 'anonymous';
 head.appendChild(link);
-
-
-// var link2 = document.createElement('link');
-// link2.rel = 'stylesheet';
-// link2.href = 'https://fonts.googleapis.com/css?family=Roboto:900i';
-// head.appendChild(link2);
-
-
 
 // create a style element
 let style = document.createElement("style");
@@ -121,17 +116,6 @@ for (let element of elements) {
 }
 
 
-// // Select all div elements and their descendants
-// let div_elements = document.querySelectorAll("div, div *");
-
-// // Loop through each element
-// for (let element of div_elements) {
-//   // Remove the class and style attributes
-//   element.removeAttribute("class");
-//   element.removeAttribute("style");
-// }
-
-
 // Select all div elements with class="css-53u6y8"
 let div_elements = document.querySelectorAll("div.css-53u6y8");
 
@@ -141,8 +125,6 @@ for (let element of div_elements) {
   element.removeAttribute("class");
   element.removeAttribute("style");
 }
-
-
 
 
 // Select all anchor elements
@@ -183,7 +165,6 @@ document.body.insertBefore(div, document.body.firstChild);
 // nav.appendChild(div);
 
 
-
 // Append a new script element to the end of the body to include bootstrap 5.3 js cdn
 var script1 = document.createElement('script');
 script1.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js';
@@ -206,28 +187,25 @@ var darkModeButton = document.getElementById("dark-mode-button");
 var html = document.documentElement;
 // Add a click event listener to the button
 darkModeButton.addEventListener("click", function() {
+
   // Get the current data-bs-theme attribute of the html element
   var theme = html.getAttribute("data-bs-theme");
   // If the theme is light, change it to dark
   if (theme == "light") {
     html.setAttribute("data-bs-theme", "dark");
 
-  // Select all the elements that match the criteria
-  let elements = document.querySelectorAll("h1, h2, h3, h4, h5, p, strong");
-  
-  // Loop through each element
-  for (let element of elements) {
-    // Remove the class and style attributes
-    element.removeAttribute("class");
-    element.removeAttribute("style");
-  
-    // Add a new class attribute with the value "text-secondary"
-    element.setAttribute("class", "text-secondary");
-  }
-
-
-
-
+    // Select all the elements that match the criteria
+    let elements = document.querySelectorAll("h1, h2, h3, h4, h5, p, strong");
+    
+    // Loop through each element
+    for (let element of elements) {
+      // Remove the class and style attributes
+      element.removeAttribute("class");
+      element.removeAttribute("style");
+    
+      // Add a new class attribute with the value "text-secondary"
+      element.setAttribute("class", "text-secondary");
+    }
     
   }
   // If the theme is dark, change it to light
@@ -255,24 +233,22 @@ body.appendChild(script4);
 
 
 
-
-
-// Une fonction qui prend un sélecteur CSS et un style à appliquer
+// Function who took a CSS selector and a style to apply
 function hideElement(selector, style) {
-  // Un intervalle qui s'exécute toutes les 500 millisecondes
+  // interval to run the function all 500 milliseconds
   let interval = setInterval(function() {
-    // Trouver l'élément qui correspond au sélecteur
+    // Find the element who match with the selector
     let element = document.querySelector(selector);
-    // Si l'élément existe, lui appliquer le style
+    // If the element exist, the function apply the style to the element
     if (element) {
       element.style = style;
-      // Arrêter l'intervalle
+      // Reset the interval to stop the loop
       clearInterval(interval);
     }
   }, 500);
 }
 
-// Appeler la fonction pour chaque élément à cacher
+// Call the function for each elements below
 // hideElement("#app", "font-family: 'Roboto' !important");
 hideElement("header", "display: none;");
 hideElement(".css-10cldcv", "display: none;");

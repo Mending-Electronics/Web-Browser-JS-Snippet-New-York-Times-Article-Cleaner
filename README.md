@@ -68,50 +68,59 @@ Feel free to customize the snippet further based on your preferences!
 
  
 
-## Capture
+# Capture
 
-**Web Browser DevTools - Snippet menu**
+## Web Browser DevTools - Snippet menu
 
 ![Web Browser DevTools - Snippet menu](https://raw.githubusercontent.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/main/captures/Capture.png "This is the Web Browser DevTools - Snippet menu.")
 
 
 
-**Article Header** Before 
+## Article Header
+
+**Before** *(original)*
 
 ![Article Header Before ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Capture2.png?raw=true "Article Header Before")
 
-**Article Header** After
+**After** *(with light mode)*
 
 ![Article Header After ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Capture3.png?raw=true "Article Header After")
 
 
 
-**Article** Before
+## Article
+
+**Before** *(original)*
 
 ![Article Before ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Image1.png?raw=true "Article Before")
 
-**Article** After
+**After** *(with dark mode)*
 
 ![Article After ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Image3.png?raw=true "Article After")
 
 
+## Article Translation
 
-**Article** Translation
+*(with dark mode)*
 
 ![Article Translation ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Image5.png?raw=true "Article Translation")
 
-**Article** Note Area
+
+## Article Note Area
+*(with dark mode)*
 
 ![Article Note Area ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Image4.png?raw=true "Article Note Area")
 
 
 
-**PDF** Dark
+## Article PDF
+
+*(with dark mode)*
 
 ![PDF Dark ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Image6.png?raw=true "PDF Dark")
 
 
-**PDF** White
+*(with light mode)*
 
 ![PDF White ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Image7.png?raw=true "PDF White")
 

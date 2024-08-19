@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "New York Times Article Cleaner",
+  "description": "This extension is for education purpose",
+  "version": "1.0",
+  "action": {
+    "default_icon": "icon.png",
+    "disabled_icon": "icon_disabled.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.nytimes.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

@@ -1,7 +1,7 @@
 /* 
   My GitHub : https://github.com/Mending-Electronics 
   Author : JALLET Alexandre 
-  Version : 0.1 
+  Version : 0.2
   
 /** 
 * The New York Times Article Cleaner JS Snippet is designed to enhance your English language study experience by streamlining the reading process. It achieves this by: 
@@ -58,12 +58,6 @@ head.appendChild(bootstrapIconsLink);
 // var jqueryScript = document.createElement('script');
 // jqueryScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js';
 // head.appendChild(jqueryScript);
-
-// // Append a new script element to the head to include jspdf cdn
-// var jspdfScript = document.createElement('script');
-// jspdfScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js';
-// head.appendChild(jspdfScript);
-
 
 
 
@@ -144,56 +138,75 @@ try {
 }
 
 
-// **** REMOVE OLD 'body, h1, h2, h3, h4, h5, p, strong, section, a, div' STYLE DEPENDENCIES & PATCH NEW STYLE ****
 
-// Select all the elements that match the criteria
-let elements = document.querySelectorAll('h1, h2, h3, h4, h5, p, strong, section',);
-
-// Loop through each element
-for (let element of elements) {
-  // Remove the class and style attributes
-  element.removeAttribute('class');
-  element.removeAttribute('style');
-  // Add a new class attribute with the value "text-secondary"
-  element.setAttribute('class', 'text-secondary');
-}
-
-// Select all div elements with class="css-53u6y8"
-let div_elements = document.querySelectorAll('div.css-53u6y8');
-// Loop through each element
-for (let element of div_elements) {
-  // Remove the class and style attributes
-  element.removeAttribute('class');
-  element.removeAttribute('style');
-}
-
-// Select all anchor elements
-let anchor_elements = document.querySelectorAll('a');
-// Loop through each element
-for (let element of anchor_elements) {
-  // Remove the class and style attributes
-  element.removeAttribute('class');
-  element.removeAttribute('style');
-  element.removeAttribute('href');
-  element.style.textDecoration = 'none';
-}
 
 // Get the body element
-var body = document.body;
-body.classList.add('container', 'adjusted');
-body.id = 'content';
-body.setAttribute('style', '--ratio: 1');
-// create a div element for the container
-let div = document.createElement('div');
-div.className = 'container-fluid';
+const body = document.body;
 
-// Function to remove all dependencies from old containers
-// Select all div elements with the class "StoryBodyCompanionColumn"
-const divElements = document.querySelectorAll('.StoryBodyCompanionColumn');
-// Remove the class attribute from each div element
-divElements.forEach(div => {
-  div.removeAttribute('class');
-});
+
+
+// **** REMOVE OLD 'body, h1, h2, h3, h4, h5, p, strong, section, a, div' STYLE DEPENDENCIES & PATCH NEW STYLE ****
+
+// Function to reset style dependencies
+function resetStyle() {
+
+  // Select all the elements that match the criteria
+  let elements = document.querySelectorAll('h1, h2, h3, h4, h5, p, strong, section');
+  
+  // Loop through each element
+  for (let element of elements) {
+    // Check if the element is a child of a div with class "alert"
+    if (!element.closest('#features')) {
+      // Remove the class and style attributes
+      element.removeAttribute('class');
+      element.removeAttribute('style');
+      // Add a new class attribute with the value "text-secondary"
+      element.setAttribute('class', 'text-secondary');
+    }
+  }
+
+  
+  // Select all div elements with class="css-53u6y8"
+  let div_elements = document.querySelectorAll('div.css-53u6y8');
+  // Loop through each element
+  for (let element of div_elements) {
+    // Remove the class and style attributes
+    element.removeAttribute('class');
+    element.removeAttribute('style');
+  }
+  
+  // Select all anchor elements
+  let anchor_elements = document.querySelectorAll('a');
+  // Loop through each element
+  for (let element of anchor_elements) {
+    // Check if the element is a child of a div with class "alert"
+    if (!element.closest('#features')) {
+      // Remove the class and style attributes
+      element.removeAttribute('class');
+      element.removeAttribute('style');
+      element.removeAttribute('href');
+      element.style.textDecoration = 'none';
+    }
+  }
+  
+  // Edit the body element
+  body.classList.add('container', 'adjusted');
+  body.id = 'content';
+  body.setAttribute('style', '--ratio: 1');
+  // create a div element for the container
+  let div = document.createElement('div');
+  div.className = 'container-fluid';
+  
+  // Function to remove all dependencies from old containers
+  // Select all div elements with the class "StoryBodyCompanionColumn"
+  const divElements = document.querySelectorAll('.StoryBodyCompanionColumn');
+  // Remove the class attribute from each div element
+  divElements.forEach(div => {
+    div.removeAttribute('class');
+  });
+};
+
+resetStyle()
 
 
 
@@ -211,6 +224,11 @@ const newHtmlNavbar = `
  
  
     <div class="d-flex justify-content-end align-items-center p-1"> 
+
+      <button id="cleanButton" type="button" class="btn d-inline-block d-flex align-items-center btn-sm btn-light border-dark me-1 fs-5" aria-pressed="false" data-bs-theme-value="light"> 
+        <i class="bi bi-stars"></i> 
+        <span class="ms-2" style="font-size: 0.7em">Clean Again</span> 
+      </button> 
  
       <button id="toggleButton" type="button" class="btn d-inline-block d-flex align-items-center btn-sm btn-light border-dark me-1 fs-5" aria-pressed="false" data-bs-theme-value="light"> 
         <i class="bi bi-pen"></i> 
@@ -229,86 +247,117 @@ const newHtmlNavbar = `
     </div> 
   </div> 
 </nav> 
+
+
+
+
+
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item" id="features">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <h5> Features </h5> 
+        <i class="bi bi-gear text-body ms-2  pb-2"></i> 
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+      <div class="accordion-body">
+        <i class="bi bi-github text-secondary me-2"></i> <strong>My GitHub </strong>  
+        <a target="_blank" href="https://github.com/Mending-Electronics"> <i> https://github.com/Mending-Electronics </i> </a>
+        
+      
+      
+      
+      
+        <div class="row"> 
+       
+          <div class="col col-6">  
+            <div class="alert alert-dismissible alert-info bg-info my-2"> 
+              <h4 class="alert-heading" style="color: white !important; font-size: 1em !important;">Informations</h4> 
+              
+              <strong class="mb-2" style="color: white !important"> 
+              ✍️ Toggle Themes: 
+              
+                <ul style="color: white !important"> 
+                  <li> 
+                    Click the “Light/Dark” button to switch between light and dark themes. 
+                  </li> 
+                </ul> 
+              </strong> 
+         
+              <strong class="mb-2" style="color: white !important"> 
+              ✍️ Save this Article as PDF: 
+              
+                <ul style="color: white !important"> 
+                  <li> 
+                   Click the “Save as PDF” button. 
+                  </li> 
+                  <li> 
+                    Choose “save as pdf” or “print to pdf” as the printer. 
+                  </li> 
+                  <li> 
+                    Go to “additional parameters.” 
+                  </li> 
+                  <li> 
+                    Set margin to “none.” 
+                  </li> 
+                  <li> 
+                    Check the “graphic background” box. 
+                  </li> 
+                </ul> 
+              </strong> 
+         
+              <strong class="mb-2" style="color: white !important"> 
+              ✍️ Save Audio as MP3: 
+              
+                <ul style="color: white !important"> 
+                  <li> 
+                    Click the three dots on the audio player. 
+                  </li> 
+                  <li> 
+                    Click “Download.” 
+                  </li> 
+                </ul> 
+              </strong> 
+         
+            </div> 
+          </div> 
+         
+            
+          <div class="col col-6">  
+            <div class="alert alert-dismissible alert-warning bg-warning my-2"> 
+              <h4 class="alert-heading" style="color: white !important; font-size: 0.83em !important;">Translate this article</h4> 
+             
+              <div id="google_translate_element"></div> 
+            </div> 
+        
+            <div id="audio" class="alert alert-dismissible alert-success bg-success my-2"> 
+              <h4 class="alert-heading" style="color: white !important; font-size: 0.83em !important;">Listen to this article</h4> 
+            </div> 
+        
+            <div class="alert alert-dismissible alert-primary bg-primary my-2"> 
+              <h4 class="alert-heading" style="color: white !important; font-size: 0.83em !important;">Edit Text Size <label for="sizeRange"><span id="zoomValue">1</span>x</label></h4> 
+              <input type="range" id="sizeRange" class="w-100" min="0.5" max="2" step="0.1" value="1" oninput="updateSize(this.value)"> 
+                  
+            </div> 
+          </div> 
+         
+        </div> 
+      
+      
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
   
   
-<div class="row"> 
-     
-  <div class="col col-6">  
-    <div class="alert alert-dismissible alert-info bg-info my-2"> 
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button> 
-      <h4 class="alert-heading" style="color: white !important; font-size: 1em !important;">Informations</h4> 
-      
-      <strong class="mb-2" style="color: white !important"> 
-      ✍️ Toggle Themes: 
-      
-        <ul style="color: white !important"> 
-          <li> 
-            Click the “Light/Dark” button to switch between light and dark themes. 
-          </li> 
-        </ul> 
-      </strong> 
- 
-      <strong class="mb-2" style="color: white !important"> 
-      ✍️ Save this Article as PDF: 
-      
-        <ul style="color: white !important"> 
-          <li> 
-           Click the “Save as PDF” button. 
-          </li> 
-          <li> 
-            Choose “save as pdf” or “print to pdf” as the printer. 
-          </li> 
-          <li> 
-            Go to “additional parameters.” 
-          </li> 
-          <li> 
-            Set margin to “none.” 
-          </li> 
-          <li> 
-            Check the “graphic background” box. 
-          </li> 
-        </ul> 
-      </strong> 
- 
-      <strong class="mb-2" style="color: white !important"> 
-      ✍️ Save Audio as MP3: 
-      
-        <ul style="color: white !important"> 
-          <li> 
-            Click the three dots on the audio player. 
-          </li> 
-          <li> 
-            Click “Download.” 
-          </li> 
-        </ul> 
-      </strong> 
- 
-    </div> 
-  </div> 
- 
-    
-  <div class="col col-6">  
-    <div class="alert alert-dismissible alert-warning bg-warning my-2"> 
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button> 
-      <h4 class="alert-heading" style="color: white !important; font-size: 0.83em !important;">Translate this article</h4> 
-     
-      <div id="google_translate_element"></div> 
-    </div> 
 
-    <div id="audio" class="alert alert-dismissible alert-success bg-success my-2"> 
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button> 
-      <h4 class="alert-heading" style="color: white !important; font-size: 0.83em !important;">Listen to this article</h4> 
-    </div> 
-
-    <div class="alert alert-dismissible alert-primary bg-primary my-2"> 
-      <button type="button" class="btn-close  btn-close-white" data-bs-dismiss="alert"></button> 
-      <h4 class="alert-heading" style="color: white !important; font-size: 0.83em !important;">Edit Text Size <label for="sizeRange"><span id="zoomValue">1</span>x</label></h4> 
-      <input type="range" id="sizeRange" class="w-100" min="0.5" max="2" step="0.1" value="1" oninput="updateSize(this.value)"> 
-          
-    </div> 
-  </div> 
- 
-</div> 
     
 `;
 
@@ -459,7 +508,7 @@ document.getElementById('toggleButton').addEventListener('click', () => {
     const existingNote = p.nextElementSibling;
     if (existingNote && existingNote.getAttribute('name') === 'noteArea') {
       existingNote.remove();
-    } else if (p.textContent.length > 100) {
+    } else if (p.textContent.length > 200) {
       p.insertAdjacentHTML('afterend', noteArea);
     }
   });
@@ -507,6 +556,9 @@ const selectorsToHide = [
   '.css-qznc1j',
   // hide advertisement
   '.css-j39py4',
+  // banner below navbar
+  '.css-1lnfix7',
+  
 ];
 
 
@@ -529,3 +581,10 @@ function hideElements(selectors) {
 }
 
 hideElements(selectorsToHide);
+
+// JS Clean function
+document.getElementById('cleanButton').addEventListener('click', () => {
+  resetStyle()
+  hideElements(selectorsToHide);
+
+});

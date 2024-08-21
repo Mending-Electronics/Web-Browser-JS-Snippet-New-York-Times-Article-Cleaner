@@ -1,4 +1,3 @@
-// scan.js
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOMContentLoaded event fired");
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
@@ -9,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
             func: (url) => {
                 console.log("Executing script in active tab with URL:", url);
                 if (url.startsWith("https://www.nytimes.com/") && document.querySelector("article")) {
-                    console.log("NYTimes article found 1");
+                    console.log("NYTimes article found");
                     chrome.runtime.sendMessage({ found: true });
                 } else {
-                    console.log("NYTimes article not found 1");
+                    console.log("NYTimes article not found");
                     chrome.runtime.sendMessage({ found: false });
                 }
             },
@@ -25,12 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Clean button clicked");
             chrome.scripting.executeScript({
                 target: { tabId: activeTab.id },
-                files: ["snippet.js"]
+                files: ["snippets/snippet.js"]
             });
         });
-
-
-
         
     });
 });
@@ -41,15 +37,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
     if (message.found) {
         cleanBtn.classList.remove("disabled");
-        cleanBtn.innerHTML = "Clean this Article! &#129529;";
+        cleanBtn.innerHTML = "Clean this Article! &#10024;";
         alertDiv.classList.remove("alert-primary");
         alertDiv.classList.add("alert-success");
-        alertDiv.innerHTML = "<strong>Well done!</strong><br> New York Times Article found!";
+        alertDiv.innerHTML = "<strong>Super!</strong><br> New York Times Article found!";
         
         // chrome.runtime.sendMessage({ action: "setActive" });
     } else {
-        // cleanBtn.classList.add("disabled");
-        cleanBtn.innerHTML = "Clean this Article! &#129529;";
+        cleanBtn.classList.add("disabled");
+        cleanBtn.innerHTML = "Clean this Article! &#10024;";
         alertDiv.classList.remove("alert-success");
         alertDiv.classList.add("alert-primary");
         alertDiv.innerHTML = "<strong>Sorry</strong><br> New York Times Article not found.";

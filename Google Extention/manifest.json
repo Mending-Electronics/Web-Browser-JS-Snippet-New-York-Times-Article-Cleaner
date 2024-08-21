@@ -4,8 +4,9 @@
   "description": "This extension is for education purpose",
   "version": "1.0",
   "action": {
-    "default_icon": "icon.png",
-    "disabled_icon": "icon_disabled.png",
+    "default_icon": "icon/icon.png",
+    "alert_icon": "icon/icon_alert.png",
+    "disabled_icon": "icon/icon_disabled.png",
     "default_popup": "popup.html"
   },
   "permissions": [
@@ -20,6 +21,7 @@
     "service_worker": "background.js"
   },
   "icons": {
-    "128": "icon128.png"
+    "128": "icon/icon128.png"
   }
+
 }

@@ -104,6 +104,18 @@ opacity: 0.8 !important;
 .alert li { 
     font-size: 0.7em; !important 
 } 
+
+
+.text-light {
+  color: #b3b3b3 !important
+}
+
+.body-dark-bg {
+  background-color: #272a2d !important
+}
+
+
+
     
 /* Adjust sizes with ratio */ 
 .adjusted p { font-size: calc(1em * var(--ratio)); } 
@@ -149,6 +161,13 @@ const body = document.body;
 
 // Function to reset style dependencies
 function resetStyle() {
+
+
+  html.setAttribute("data-bs-theme", "light"); 
+    
+  let bodyElement = document.querySelector("body");
+  bodyElement.classList.remove("body-dark-bg"); 
+
 
   // Select all the elements that match the criteria
   let elements = document.querySelectorAll('h1, h2, h3, h4, h5, p, strong, section');
@@ -418,6 +437,7 @@ script3.src = 'https://translate.google.com/translate_a/element.js?cb=googleTran
 body.appendChild(script3);
 
 
+
 // Append a script element to the body to handle the dark mode switch logic
 var script4 = document.createElement('script');
 script4.textContent = ` 
@@ -443,22 +463,50 @@ darkModeButton.addEventListener("click", function() {
     
     // Loop through each element 
     for (let element of elements) { 
-  // Check if the element is a child of a div with class "alert" 
-  if (!element.closest(".alert")) { 
-      // Remove the class and style attributes 
-      element.removeAttribute("class"); 
-      element.removeAttribute("style"); 
-    
-      // Add a new class attribute with the value "text-secondary" 
-      element.setAttribute("class", "text-secondary"); 
+      // Check if the element is a child of a div with class "alert" 
+      if (!element.closest(".alert")) { 
+        // Remove the class and style attributes 
+        element.removeAttribute("class"); 
+        element.removeAttribute("style"); 
+      
+        // Add a new class attribute with the value "text-light" 
+        element.setAttribute("class", "text-light"); 
+      } 
     } 
-    } 
+
+    let bodyElement = document.querySelector("body");
+    bodyElement.classList.add("body-dark-bg"); 
+
   } 
   // If the theme is dark, change it to light 
   else if (theme == "dark") { 
     html.setAttribute("data-bs-theme", "light"); 
-  } 
+    
+    // Select all the elements that match the criteria 
+    let elements = document.querySelectorAll("h1, h2, h3, h4, h5, p, strong"); 
+    
+    // Loop through each element 
+    for (let element of elements) { 
+      // Check if the element is a child of a div with class "alert" 
+      if (!element.closest(".alert")) { 
+        // Remove the class and style attributes 
+        element.removeAttribute("class"); 
+        element.removeAttribute("style"); 
+      
+        // Add a new class attribute with the value "text-secondary" 
+        element.setAttribute("class", "text-secondary"); 
+      } 
+    }
+
+    let bodyElement = document.querySelector("body");
+    bodyElement.classList.remove("body-dark-bg"); 
+
+  }; 
+
 }); 
+
+
+
   
   
 /**************************************** 
@@ -487,6 +535,7 @@ window.print(); // This will open the print dialog
   
 `;
 body.appendChild(script4);
+
 
 
 // Function to create empty space under <p> elements for taking notes.
@@ -545,6 +594,8 @@ const selectorsToHide = [
   '#styln-guide',
   '#dock-container',
   '#site-index',
+  '#gateway-content',  // Thanks for reading The Times. Create your free account or log in to continue reading.
+
 
   // Classes
   '.css-10cldcv',

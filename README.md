@@ -86,6 +86,9 @@ Feel free to customize the snippet further based on your preferences!
 
 ![Article Header After ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Capture3.png?raw=true "Article Header After")
 
+**After** *(with Dark mode)*
+
+![Article Header After ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Capture10.png?raw=true "Article Header After")
 
 
 ## Article
@@ -110,6 +113,13 @@ Feel free to customize the snippet further based on your preferences!
 *(with dark mode)*
 
 ![Article Note Area ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Image4.png?raw=true "Article Note Area")
+
+
+## Show / Hide Header
+
+*(with dark mode)*
+
+![Show Hide Header ](https://github.com/Mending-Electronics/Web-Browser-JS-Snippet-New-York-Times-Article-Cleaner/blob/main/captures/Capture11.png?raw=true "Show Hide Header")
 
 
 
